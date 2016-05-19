@@ -3,7 +3,7 @@
 
 set -e
 
-GETTEXT_TARBALL=http://fb_wanted.s3.amazonaws.com/bp/gettext.tar.gz
+GETTEXT_TARBALL=http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.7.tar.gz
 TARGET_DIR=$HOME
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -15,6 +15,6 @@ if [ -d $TARGET_DIR/gettext ]; then
 	exit 0
 fi
 
-echo "-----> Installing gettext via apt-get ..."
-apt-get install gettext
+echo "-----> Installing gettext 0.19.7 ..."
+curl --max-time 60 --location "$GETTEXT_TARBALL" | tar xz
 echo "-----> done in $TARGET_DIR/gettext"
